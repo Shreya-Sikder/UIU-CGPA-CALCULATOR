@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="uiu-logo.jpg">
+  <title>UIU CGPA Calculator</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Three-dots menu -->
+    <div class="menu-icon" onclick="toggleGradeChart()">
+      <i class="fas fa-ellipsis-v"></i>
+    </div>
+
+    <h1>UIU CGPA Calculator</h1>
+
+    <!-- Initial Details -->
+    <div class="section">
+      <label for="totalCredits">Total Credits Completed:</label>
+      <input type="number" step="0.01" id="totalCredits" placeholder="Enter total credits">
+
+      <label for="totalCGPA">Total CGPA:</label>
+      <input type="number" step="0.01" id="totalCGPA" placeholder="Enter total CGPA">
+    </div>
+
+    <!-- Add New Courses -->
+    <div class="section">
+      <h2>Add New Courses</h2>
+      <div id="newCourses">
+        <!-- New Course Inputs Will Be Added Here -->
+      </div>
+      <button id="addNewCourseBtn" class="add-btn">+ Add New Course</button>
+    </div>
+
+    <!-- Add Retake Courses -->
+    <div class="section">
+      <h2>Add Retake Courses</h2>
+      <div id="retakeCourses">
+        <!-- Retake Course Inputs Will Be Added Here -->
+      </div>
+      <button id="addRetakeCourseBtn" class="add-btn">+ Add Retake Course</button>
+    </div>
+
+    <!-- Calculate Button -->
+    <div class="section">
+      <button id="calculateBtn">Calculate CGPA</button>
+      <!-- Developer's Info Section -->
+      <div class="developer-info">
+        <h3>Developer's Info</h3>
+        <p>Developed by: Shreya Sikder</p>
+        <p>United International University</p>
+        <div class="social-icons">
+          <a href="mailto:shreyasikder03@gmail.com" target="_blank" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/Shreya-Sikder" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/shreyasikder03/" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup Modal for Result -->
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">×</span>
+      <h2>Calculation Result</h2>
+      <div class="result-container">
+        <div class="labels">
+          <p>Total Credits Completed:</p>
+          <p>Total CGPA:</p>
+          <p>GPA Credits:</p>
+          <p>Total GPA:</p>
+        </div>
+        <div class="values">
+          <p><span id="totalCreditsResult">0.00</span></p>
+          <p><span id="totalCgpaResult">0.00</span></p>
+          <p><span id="gpaCreditResult">0.00</span></p>
+          <p><span id="totalGpaResult">0.00</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grade Chart Modal -->
+  <div id="gradeChartModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeGradeChart()">×</span>
+      <h2>Grade Chart</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Letter Grade</th>
+            <th>Grade Point</th>
+            <th>Marks (%)</th>
+            <th>Assessment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A (Plain)</td>
+            <td>4.00</td>
+            <td>90 – 100</td>
+            <td>Outstanding</td>
+          </tr>
+          <tr>
+            <td>A- (Minus)</td>
+            <td>3.67</td>
+            <td>86 – 89</td>
+            <td>Excellent</td>
+          </tr>
+          <tr>
+            <td>B+ (Plus)</td>
+            <td>3.33</td>
+            <td>82 – 85</td>
+            <td>Very Good</td>
+          </tr>
+          <tr>
+            <td>B (Plain)</td>
+            <td>3.00</td>
+            <td>78 – 81</td>
+            <td>Good</td>
+          </tr>
+          <tr>
+            <td>B- (Minus)</td>
+            <td>2.67</td>
+            <td>74 – 77</td>
+            <td>Above Average</td>
+          </tr>
+          <tr>
+            <td>C+ (Plus)</td>
+            <td>2.33</td>
+            <td>70 – 73</td>
+            <td>Average</td>
+          </tr>
+          <tr>
+            <td>C (Plain)</td>
+            <td>2.00</td>
+            <td>66 – 69</td>
+            <td>Below Average</td>
+          </tr>
+          <tr>
+            <td>C- (Minus)</td>
+            <td>1.67</td>
+            <td>62 – 65</td>
+            <td>Poor</td>
+          </tr>
+          <tr>
+            <td>D+ (Plus)</td>
+            <td>1.33</td>
+            <td>58 – 61</td>
+            <td>Very Poor</td>
+          </tr>
+          <tr>
+            <td>D (Plain)</td>
+            <td>1.00</td>
+            <td>55 – 57</td>
+            <td>Pass</td>
+          </tr>
+          <tr>
+            <td>F</td>
+            <td>0.00</td>
+            <td>0 – 54</td>
+            <td>Fail</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
